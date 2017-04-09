@@ -3,7 +3,7 @@
   vars:
     consul_version: 0.7.5
     bootstrap_expect: 3
-    encrypt: redacted 
+    encrypt: gT7Kk7/mmGpevwrZ9Oa7cA==
     datecenter: lukem
     data_dir: /var/lib/consul
   tasks:
