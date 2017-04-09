@@ -1,0 +1,62 @@
+- hosts: all
+  become: True
+  vars:
+    consul_version: 0.7.5
+    bootstrap_expect: 3
+    encrypt: redacted 
+    datecenter: lukem
+    data_dir: /var/lib/consul
+  tasks:
+  - name: Set hostname
+    hostname:
+      name: "{{hostname}}"
+  - name: Ensure that unzip is installed 
+    yum:
+      name: unzip 
+      state: present
+  - name: Download the consul tarball
+    get_url:
+      url: 'https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_amd64.zip'
+      dest: /tmp/consul.zip
+  - name: Extract consul to path
+    unarchive:
+      src: /tmp/consul.zip
+      dest: /usr/local/bin
+      remote_src: True
+  - name: Create consul group
+    group:
+      name: consul 
+      state: present 
+  - name: Create consul user
+    user:
+      name: consul 
+      comment: "Consul User"
+      group: consul 
+  - name: Make consul data directory 
+    file:
+      path: /etc/consul.d/server
+      state: directory
+  - name: Make consul lib directory 
+    file:
+      path: "{{data_dir}}"
+      state: directory
+      owner: consul
+      group: consul
+  - name: Copy config.json template
+    template:
+      src: templates/config.json
+      dest: /etc/consul.d/server/config.json
+  - name: Copy systemd file 
+    template:
+      src: templates/consul-server.service.j2
+      dest: /etc/systemd/system/consul-server.service
+      owner: root
+      group: root 
+      mode: 0755
+  - name: Enable consul service
+    systemd:
+      name: consul-server 
+      state: started
+      enabled: yes
+      masked: no
+      daemon_reload: yes

@@ -1,0 +1,3 @@
+10.10.10.141 ansible_connection=ssh ansible_user=vagrant advertise_addr="10.10.10.141" hostname=consul1 
+10.10.10.142 ansible_connection=ssh ansible_user=vagrant advertise_addr="10.10.10.142" hostname=consul2
+10.10.10.143 ansible_connection=ssh ansible_user=vagrant advertise_addr="10.10.10.143" hostname=consul3

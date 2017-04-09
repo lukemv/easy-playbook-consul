@@ -1,0 +1,28 @@
+{
+  "bootstrap_expect": {{bootstrap_expect}},
+  "client_addr": "0.0.0.0",
+  "bind_addr": "0.0.0.0",
+  "advertise_addr": "{{advertise_addr}}",
+  "start_join": [
+    "10.10.10.141",
+    "10.10.10.142", 
+    "10.10.10.143"
+  ],
+  "retry_join": [
+    "10.10.10.141",
+    "10.10.10.142", 
+    "10.10.10.143"
+  ],
+  "datacenter": "{{datecenter}}",
+  "data_dir": "{{data_dir}}",
+  "pid_file": "{{data_dir}}/consul.pid",
+  "disable_update_check": true,
+  "enable_syslog": true,
+  "encrypt": "{{encrypt}}",
+  "leave_on_terminate": true,
+  "log_level": "INFO",
+  "recursors": ["8.8.8.8","8.8.4.4"],
+  "rejoin_after_leave": true,
+  "server": true,
+  "ui": true                
+}
