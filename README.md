@@ -1,4 +1,4 @@
-This playbook is a good starting point for understanding how to get a basic consul cluster up and running in an on-prem VM environment. **This is currently not a production worthy effort, you would be seriously neglegant to use it for prod purposes.**
+This playbook is a good starting point for understanding how to get a basic consul cluster up and running in an on-prem VM environment. **This is currently not a production worthy effort, you would be seriously negligant to use it for prod purposes.**
 
 
 
